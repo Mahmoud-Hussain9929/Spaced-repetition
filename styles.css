@@ -1,0 +1,215 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+
+/* Define variables */
+:root {
+  --red: #FF6565;
+  --pink: #FF64F9;
+  --purple: #6B5FFF;
+  --blue: #4D8AFF;
+  --green: #5BFF89;
+  --yellow: #FFEE55;
+  --orange: #FF6D1B;
+}
+
+/* Base styles for the body */
+body {
+  font-family: 'Cairo', sans-serif;
+  direction: rtl;
+  background-color: #000000; /* خلفية الصفحة - أسود */
+  color: #ffffff; /* لون النص الأساسي */
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Container styles */
+.container {
+  max-width: 600px;
+  width: 100%;
+  background: #333333; /* خلفية الحاوية - رمادي داكن */
+  padding: 30px;
+  border-radius: 10px;
+  position: relative;
+  animation: glow 5s linear infinite alternate, slideIn 0.5s ease-out; /* تأثيرات التوهج والانتقال */
+  box-shadow: 0 0 40px 10px rgba(255, 255, 255, 0.2), 
+              0 0 80px 20px rgba(255, 255, 255, 0.2), 
+              0 0 160px 40px rgba(255, 255, 255, 0.2);
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 40px 10px var(--red),
+                0 0 80px 20px var(--green),
+                0 0 160px 40px var(--blue);
+  }
+  25% {
+    box-shadow: 0 0 40px 10px var(--orange),
+                0 0 80px 20px var(--yellow),
+                0 0 160px 40px var(--purple);
+  }
+  50% {
+    box-shadow: 0 0 40px 10px var(--pink),
+                0 0 80px 20px var(--blue),
+                0 0 160px 40px var(--green);
+  }
+  75% {
+    box-shadow: 0 0 40px 10px var(--yellow),
+                0 0 80px 20px var(--purple),
+                0 0 160px 40px var(--orange);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+h1 {
+  text-align: center;
+  color: #ffffff; /* لون العنوان الرئيسي */
+  margin-bottom: 20px;
+  animation: fadeIn 1s ease-in-out; /* تأثير الظهور */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.task-input {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  animation: slideInLeft 0.5s ease-out; /* حركة الانتقال لليسار */
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.task-input input {
+  width: 70%;
+  padding: 10px;
+  border: 1px solid #666666; /* حدود حقل الإدخال - رمادي */
+  border-radius: 5px;
+  margin-right: 10px;
+  font-size: 16px;
+  color: #ffffff; /* لون النص في حقل الإدخال */
+  transition: all 0.3s ease;
+  background-color: #333333; /* خلفية حقل الإدخال - رمادي داكن */
+  transform-origin: center;
+}
+
+.task-input input:focus {
+  border-color: #28a745; /* حدود حقل الإدخال عند التركيز - أخضر */
+  box-shadow: 0 0 8px rgba(40, 167, 69, 0.2);
+  transform: scale(1.1); /* تكبير مربع البحث عند التركيز */
+}
+
+.task-input input:hover {
+  transform: scale(1.05); /* تكبير مربع البحث عند التحويم */
+}
+
+.task-input button {
+  padding: 10px 20px;
+  border: none;
+  background: #28a745; /* خلفية زر إضافة المهمة - أخضر */
+  color: white; /* لون نص زر إضافة المهمة */
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s ease;
+  animation: fadeIn 1s ease-in-out; /* تأثير الظهور */
+}
+
+.task-input button:hover {
+  background: #218838; /* خلفية زر إضافة المهمة عند التحويم - أخضر داكن */
+}
+
+.task {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  border-bottom: 1px solid #666666; /* خطوط الفواصل بين المهام - رمادي */
+  transition: background 0.3s, transform 0.3s ease-in-out;
+  background-color: #333333; /* خلفية المهمة - رمادي داكن */
+  animation: fadeIn 1s ease-in-out; /* تأثير الظهور */
+  position: relative; /* لتمكين العناصر المتحركة */
+}
+
+.task:hover {
+  background: #444444; /* خلفية المهمة عند التحويم - رمادي أغمق */
+  transform: scale(1.02);
+}
+
+.task:last-child {
+  border-bottom: none;
+}
+
+.task .task-name {
+  flex: 1;
+  margin-right: 20px;
+  font-size: 16px;
+  color: #ffffff; /* لون نص اسم المهمة */
+}
+
+.task .task-periods {
+  display: flex;
+  align-items: center;
+  animation: fadeIn 1s ease-in-out; /* تأثير الظهور */
+}
+
+.task .task-periods label {
+  margin-left: 10px;
+  font-size: 14px;
+  color: #cccccc; /* لون نص فترات التكرار - رمادي فاتح */
+}
+
+.task .task-periods input[type="checkbox"] {
+  margin-left: 5px;
+  transition: transform 0.3s ease;
+}
+
+.task .task-periods input[type="checkbox"]:checked {
+  transform: scale(1.2);
+}
+
+.task .delete-button {
+  background: #dc3545; /* خلفية زر حذف المهمة - أحمر */
+  color: white; /* لون نص زر حذف المهمة */
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s ease;
+}
+
+.task .delete-button:hover {
+  background: #c82333; /* خلفية زر حذف المهمة عند التحويم - أحمر داكن */
+}
+
+/* تأثير حذف المهمة - بداية */
+
